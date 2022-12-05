@@ -1,42 +1,63 @@
+const mongoose = require("mongoose");
+const mongo = require("mongodb");
+const User = require("./database/userModel");
+const session = require("express-session");
 
-var express = require('express');
-var path = require('path');
+const express = require("express");
+const path = require("path");
 
-var app = express();
+const app = express();
+
+// Routes
+const loginRoute = require("./routes/login");
+const registerRoute = require("./routes/register");
+const homeRoute = require("./routes/home");
+const citiesRoute = require("./routes/cities");
+const hikingRoute = require("./routes/hiking");
+const islandsRoute = require("./routes/islands");
+const romeRoute = require("./routes/rome");
+const parisRoute = require("./routes/paris");
+const santoriniRoute = require("./routes/santorini");
+const searchresultsRoute = require("./routes/searchresults");
+const wanttogoRoute = require("./routes/wanttogo");
+const incaRoute = require("./routes/inca");
+const annapurnaRoute = require("./routes/annapurna");
+const baliRoute = require("./routes/bali");
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/',(req,res)=> {
-  res.render('login');
-})
-
-app.get('/home',(req,res)=>{
-  res.render('home',{name:req.body.userName});
-})
-
-app.get('/search', (req,res)=>{
-  res.render('searchpage');
-})
-
-app.get('/islands',(req,res) => {
-  res.render('islands')
-})
-
-app.post('/',(req,res)=>{
-  res.render('home',{name:req.body.username});
-})
-
-// app.all('*',(req,res)=>{
-//   res.status(404).send('page not found 404')
-// })
+app.use("/register", registerRoute);
+app.use("/login", loginRoute);
+app.use("/", homeRoute);
+app.use("/cities", citiesRoute);
+app.use("/hiking", hikingRoute);
+app.use("/islands", islandsRoute);
+app.use("/rome", romeRoute);
+app.use("/paris", parisRoute);
+app.use("/santorini", santoriniRoute);
+app.use("/search", searchresultsRoute);
+app.use("/wanttogo", wanttogoRoute);
+app.use("/inca", incaRoute);
+app.use("/annapurna", annapurnaRoute);
+app.use("/bali", baliRoute);
 
 app.listen(5000);
 
-
-
+mongoose.connect("mongodb://localhost:27017/travellingDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});

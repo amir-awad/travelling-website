@@ -8,7 +8,6 @@ const path = require("path");
 
 const app = express();
 
-// Routes
 const loginRoute = require("./routes/login");
 const registerRoute = require("./routes/register");
 const homeRoute = require("./routes/home");
@@ -32,10 +31,8 @@ app.use(
     saveUninitialized: false,
   }),
 );
-
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -56,6 +53,7 @@ app.use("/annapurna", annapurnaRoute);
 app.use("/bali", baliRoute);
 
 app.listen(5000);
+console.log("listening on port 5000....");
 
 mongoose.connect("mongodb://localhost:27017/travellingDB", {
   useNewUrlParser: true,

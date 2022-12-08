@@ -5,7 +5,7 @@ const url = require("url");
 const User = require("../database/userModel");
 
 async function register(username, password) {
-  const user = new User({ userName: username, password: password });
+  const user = new User({ userName: username, password: password,wantToGoList:[]});
   let verify = "yes";
   await user.save().catch((err) => {
     if (err) {

@@ -13,7 +13,6 @@
     "ejs": "^3.1.8",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
-    "git-hooks": "^1.1.10",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "mongodb": "^4.12.1",

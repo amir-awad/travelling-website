@@ -55,7 +55,7 @@ app.use("/bali", baliRoute);
 app.listen(5000);
 console.log("listening on port 5000....");
 
-mongoose.connect("mongodb://localhost:27017/travellingDB", {
+mongoose.connect("mongodb://0.0.0.0:27017/travellingDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

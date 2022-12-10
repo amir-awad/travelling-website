@@ -13,19 +13,10 @@ router.post("/", (req, res) => {
   update(req.session.name);
   res.render("paris");
 });
-async function update(user_name){
-  const query = { "userName": "12"};
-  const updateDocument = {
-    $push: { "wantToGoList.$[]": "paris" }
-  };
-  console.log(user_name);
-  console.log('done')
-};
 
 const { MongoClient } = require("mongodb");
 // Connection URI
-const uri =
-  "mongodb://0.0.0.0:27017";
+const uri = "mongodb://0.0.0.0:27017";
 // Create a new MongoClient
 const client = new MongoClient(uri);
 async function run() {
@@ -35,22 +26,21 @@ async function run() {
     // Establish and verify connection
     await client.db("travellingDB").command({ ping: 1 });
     console.log("Connected successfully to server");
-    await client.db('travellingDB').collection('users').updateOne({userName:'12'},{ 
+    var coll = await client.db('travellingDB').collection('users');
+    await coll.updateOne({userName:'12'},{ 
       $push: { 
         wantToGoList: {
-            $each: [ "MAlek" ],
+            $each: ["MAlek"],
             $position: 0
          }
        } 
-     })  //..insertOne({1:'malek'});
-    var coll = await client.db('travellingDB').collection('users');
-    var tmp = await coll.indexes();
-    console.log(tmp);
+     });
 } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
   }
 }
 run().catch(console.dir);
+
 
 module.exports = router;

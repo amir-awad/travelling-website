@@ -7,7 +7,8 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const username = req.body.username;
+  const username = req.session.userName;
+  console.log(req.session.userName)
   // res.render("paris");
   console.log('here');
   const { MongoClient } = require("mongodb");
@@ -22,8 +23,8 @@ router.post("/", (req, res) => {
       // Establish and verify connection
       await client.db("travellingDB").command({ ping: 1 });
       console.log("Connected successfully to server");
-      var coll = await client.db('travellingDB').collection('users');
-      await coll.updateOne({userName: username  },{ 
+      const coll = await client.db('travellingDB').collection('users');
+      await coll.updateOne({userName: username},{ 
         $addToSet: { 
           wantToGoList: {
               $each: ["Paris"],    

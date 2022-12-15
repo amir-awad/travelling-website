@@ -32,11 +32,11 @@ app.use(
 );
 
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs"); // set up ejs for templating
 
+app.set("view engine", "ejs"); // set up ejs for templating
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(".", "public", "images")));
 
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);

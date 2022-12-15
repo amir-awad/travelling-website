@@ -104,3 +104,7 @@ dist
 .tern-port
 
 node_modules/
+
+# docker files
+Dockerfile
+docker-compose.yml

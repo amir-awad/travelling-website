@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -15,8 +15,7 @@
     "express-session": "^1.17.3",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "mongodb": "^4.12.1",
-    "mongoose": "^6.7.5",
+    "mongodb": "latest",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.20",
     "pre-commit": "^1.2.2",

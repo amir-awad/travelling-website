@@ -1,13 +1,49 @@
 const { MongoClient } = require("mongodb");
 
 const userSchema = {
-  userName: { type: String, unique: true },
-  password: String,
-  wantToGoList: [{ type: String, unique: true }],
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["name", "password", "wantToGoList"],
+      properties: {
+        // unique username
+        userName: {
+          bsonType: "string",
+          description: "must be a string and is required",
+        },
+
+        password: {
+          bsonType: "string",
+          description: "must be a string and is required",
+        },
+        wantToGoList: {
+          // Array of unique strings
+          bsonType: "array",
+          uniqueItems: true,
+
+          items: {
+            bsonType: "string",
+            description: "must be a string and is required",
+          },
+        },
+      },
+    },
+  },
 };
 
-const uri = "mongodb://0.0.0.0:27017/";
-createCollection(getClient(uri), "myDB", "myCollection");
+function mongoConnect() {
+  const uri = "mongodb://0.0.0.0:27017/";
+  createDB(uri, "myDB");
+  createCollection(getClient(uri), "myDB", "myCollection");
+}
+
+function createDB(uri, dbName) {
+  const dbUri = `${uri}${dbName}`;
+  MongoClient.connect(dbUri, (err, db) => {
+    console.log("Connected to database");
+    db.close();
+  });
+}
 
 function getClient(uri) {
   return new MongoClient(uri);
@@ -40,3 +76,5 @@ function createCollection(client, dbName, collectionName) {
       });
   });
 }
+
+module.exports = { mongoConnect };

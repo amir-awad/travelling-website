@@ -23,7 +23,6 @@ router.post("/", (req, res, next) => {
         if (result) {
           if (result.password === password) {
             req.session.userName = username;
-            req.session.wantsToGo = result.wantsToGo;
             return res.redirect("/");
           } else {
             return res.render("login", { error_msg: "Wrong password" });

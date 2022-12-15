@@ -1,6 +1,5 @@
-const mongoose = require("mongoose");
-const mongo = require("mongodb");
-const User = require("./database/userModel");
+const mongoConnect = require("./database/userModel");
+
 const session = require("express-session");
 
 const express = require("express");
@@ -31,8 +30,10 @@ app.use(
     saveUninitialized: false,
   }),
 );
+
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+app.set("view engine", "ejs"); // set up ejs for templating
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -55,7 +56,4 @@ app.use("/bali", baliRoute);
 app.listen(5000);
 console.log("listening on port 5000....");
 
-mongoose.connect("mongodb://0.0.0.0:27017/travellingDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoConnect.mongoConnect();

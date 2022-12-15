@@ -1,27 +1,40 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const router = express.Router();
 const url = require("url");
-const User = require("../database/userModel");
+const { MongoClient } = require("mongodb");
+const client = new MongoClient("mongodb://0.0.0.0:27017/");
 
 async function register(username, password) {
-  const user = new User({ userName: username, password: password,wantToGoList:[]});
+  // register the new user in myCollection
   let verify = "yes";
-  await user.save().catch((err) => {
-    if (err) {
-      console.log("error", err);
-      verify = "no";
-    }
+
+  client.connect(function (err, db) {
+    if (err) throw err;
+    let currentDB = db.db("myDB");
+    currentDB.collection("myCollection").insertOne(
+      {
+        name: username,
+        password: password,
+        wantToGoList: [],
+      },
+      function (err, res) {
+        if (err) {
+          console.log("error", err);
+          verify = "no";
+        }
+        db.close();
+      },
+    );
   });
+
   return verify;
 }
 
-let success_msg = "";
+let success_msg = false;
 // Post registration into db
 router.post("/", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
-  let err_msg = "";
 
   register(username, password).then((check) => {
     console.log("check", check);
@@ -43,6 +56,10 @@ router.post("/", (req, res, next) => {
 });
 
 router.get("/", (req, res, next) => {
+  if (req.session.userName) {
+    return res.redirect("/");
+  }
+
   res.render("registration");
 });
 

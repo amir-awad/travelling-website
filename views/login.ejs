@@ -38,10 +38,10 @@
     <div class="cont">
       <form method="POST">
         Username:<br />
-        <input type="text" name="username" />
+        <input type="text" name="username" required />
         <br />
         Password:<br />
-        <input type="password" name="password" />
+        <input type="password" name="password" required />
         <br /><br />
         <input type="submit" value="Login" />
       </form>
@@ -51,8 +51,8 @@
     <br />
     <br />
     <br />
-    <% if(locals.err_msg) { %>
-    <div class="alert alert-danger" role="alert"><%= err_msg %></div>
+    <% if(locals.error_msg) { %>
+    <div class="alert alert-danger" role="alert"><%= error_msg %></div>
     <% } %> <% if(locals.success_msg) { %>
     <div class="alert alert-success" role="alert"><%= success_msg %></div>
     <% } %>

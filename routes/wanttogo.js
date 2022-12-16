@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("wanttogo");
+  
   const { MongoClient } = require("mongodb");
   const username = req.session.userName;
   // Connection URL
@@ -19,8 +19,9 @@ router.get("/", (req, res) => {
       console.log("Connected successfully to server");
       const coll = await client.db('travellingDB').collection('users');
       const user =  await coll.findOne({userName: username});
-      const wantToGoList = user.wantToGoList;
-      console.log(wantToGoList);
+      const wanttogolist = user.wantToGoList;
+
+      res.render("wanttogo",{wanttogolist})
       
   } finally {
       // Ensures that the client will close when you finish/error

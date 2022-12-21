@@ -20,10 +20,10 @@ router.post("/", (req, res) => {
       // Connect the client to the server (optional starting in v4.7)
       await client.connect();
       // Establish and verify connection
-      await client.db("travellingDB").command({ ping: 1 });
+      await client.db("myDB").command({ ping: 1 });
       console.log("Connected successfully to server");
-      const coll = await client.db('travellingDB').collection('users');
-      await coll.updateOne({userName: username},{ 
+      const coll = await client.db('myDB').collection('myCollection');
+      await coll.updateOne({name: username},{ 
         $addToSet: { 
           wantToGoList: {
               $each: ["Inca"],    

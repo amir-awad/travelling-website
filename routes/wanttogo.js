@@ -15,12 +15,12 @@ router.get("/", (req, res) => {
       // Connect the client to the server (optional starting in v4.7)
       await client.connect();
       // Establish and verify connection
-      await client.db("travellingDB").command({ ping: 1 });
+      await client.db("myDB").command({ ping: 1 });
       console.log("Connected successfully to server");
-      const coll = await client.db('travellingDB').collection('users');
-      const user =  await coll.findOne({userName: username});
+      const coll = await client.db('myDB').collection('myCollection');
+      
+      const user =  await coll.findOne({name: username});
       const wanttogolist = user.wantToGoList;
-
       res.render("wanttogo",{wanttogolist})
       
   } finally {
@@ -28,6 +28,7 @@ router.get("/", (req, res) => {
       await client.close();
     }
   }
+
   run().catch(console.dir);
 });
 

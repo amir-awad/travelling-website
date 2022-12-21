@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
       await coll.updateOne({name: username},{ 
         $addToSet: { 
           wantToGoList: {
-              $each: ["Bali"],    
+              $each: ["bali"],    
            }
          } 
        });

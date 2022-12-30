@@ -8,6 +8,13 @@ router.post("/", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
+  if(!username){
+    return res.render("login", { error_msg: "Please Enter Username" });
+  }
+
+  if(!password){
+    return res.render("login", { error_msg: "Please Enter Password" });
+  }
   // Check if the user is already logged in
   if (req.session.userName) {
     return res.redirect("/");

@@ -12,6 +12,14 @@ router.post("/", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
+  if(!username){
+    return res.render("registration", { err_msg: "Please Enter Username" });
+  }
+
+  if(!password){
+    return res.render("registration", { err_msg: "Please Enter Password" });
+  }
+
   client.connect(function (err, db) {
     if (err) throw err;
     let currentDB = db.db("myDB");

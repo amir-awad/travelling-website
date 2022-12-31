@@ -1,3 +1,15 @@
 {
-  "destinations": ["annapurna", "bali", "inca", "paris", "rome", "santorini"]
+  "destinations": [
+    {"link":"annapurna",
+    "name":"Annapurna Circuit"},
+    {"link":"bali",
+    "name":"Bali Island"},
+    {"link":"inca",
+    "name":"Inca Trail to Machu Picchu"},
+    {"link":"paris",
+    "name":"Paris"},
+    {"link":"rome",
+    "name":"Rome"},
+    {"link":"santorini",
+    "name":"Santorini Island"}]
 }

@@ -68,15 +68,15 @@
           <div class="card mb-4 shadow-sm">
             <img
               class="card-img-top"
-              src="<%= result %>.png"
+              src="<%= result['link'] %>.png"
               alt="Card image cap"
             />
             <div class="card-body">
-              <p class="card-text"><%= result %></p>
+              <p class="card-text"><%= result['name'] %></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a
-                    href="/<%= result %>"
+                    href="/<%= result['link'] %>"
                     class="btn btn-sm btn-outline-secondary"
                     >View</a
                   >

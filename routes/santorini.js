@@ -42,9 +42,9 @@ router.post("/", (req, res) => {
       // Ensures that the client will close when you finish/error
       await client.close();
       if(exist==1)
-      res.render("santorini",{message:"you already have this distenation"});
+      res.render("santorini",{message:"You have already this distenation"});
     else
-      res.render("santorini",{message:"added succeffully"});
+      res.render("santorini",{message:"Added successfully"});
     }
   }
   run().catch(console.dir);

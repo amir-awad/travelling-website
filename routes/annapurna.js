@@ -43,9 +43,9 @@ router.post("/", (req, res) => {
       // Ensures that the client will close when you finish/error
       await client.close();
       if(exist==1)
-      res.render("annapurna",{message:"you already have this distenation"});
+      res.render("annapurna",{message:"You have already this distenation"});
     else
-      res.render("annapurna",{message:"added succeffully"});
+      res.render("annapurna",{message:"Added successfully"});
     }
   }
   run().catch(console.dir);

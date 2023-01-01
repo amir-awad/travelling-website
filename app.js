@@ -21,6 +21,7 @@ const wanttogoRoute = require("./routes/wanttogo");
 const incaRoute = require("./routes/inca");
 const annapurnaRoute = require("./routes/annapurna");
 const baliRoute = require("./routes/bali");
+const logoutRoute = require("./routes/logout");
 
 // view engine setup
 app.use(
@@ -52,6 +53,7 @@ app.use("/wanttogo", wanttogoRoute);
 app.use("/inca", incaRoute);
 app.use("/annapurna", annapurnaRoute);
 app.use("/bali", baliRoute);
+app.use("/logout", logoutRoute);
 
 app.listen(5000);
 console.log("listening on port 5000....");

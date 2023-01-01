@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require("express-session");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -7,5 +8,10 @@ router.get("/", (req, res) => {
   else
     res.render("home", { name: req.session.userName });
 });
+
+router.post("/",(req,res)=>{
+  req.session.destroy();
+  res.redirect("/");
+})
 
 module.exports = router;

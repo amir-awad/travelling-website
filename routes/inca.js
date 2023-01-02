@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
       console.log("Connected successfully to server");
       const coll = await client.db('myDB').collection('myCollection');
       const user =  await coll.findOne({name: username});
-      const wanttogolist = user.wantToGoList;
+      const wanttogolist = [];
       wanttogolist.forEach(element => {
         if(element=="inca"){
           exist=1;

@@ -1,4 +1,3 @@
-const mongoConnect = require("./database/userModel");
 
 const session = require("express-session");
 
@@ -55,7 +54,9 @@ app.use("/annapurna", annapurnaRoute);
 app.use("/bali", baliRoute);
 app.use("/logout", logoutRoute);
 
-app.listen(5000);
-console.log("listening on port 5000....");
+const PORT = process.env.PORT || 5000;
 
-mongoConnect.mongoConnect();
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
+});
+

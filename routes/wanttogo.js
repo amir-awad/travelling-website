@@ -16,37 +16,19 @@ function addNamesToWantToGoList(wantToGoList){
 
 router.get("/", (req, res) => {
 
-  const { MongoClient } = require("mongodb");
   const username = req.session.userName;
   // Connection URL
 
   if (typeof req.session.userName === "undefined") 
   res.redirect("/login");
   else{
-    const uri = "mongodb://0.0.0.0:27017";
-    // Create a new MongoClient
-    const client = new MongoClient(uri);
     async function run() {
-      try {
-        // Connect the client to the server (optional starting in v4.7)
-        await client.connect();
-        // Establish and verify connection
-        await client.db("myDB").command({ ping: 1 });
-        console.log("Connected successfully to server");
-        const coll = await client.db('myDB').collection('myCollection');
-        
-        const user =  await coll.findOne({name: username});
-        const wanttogolist = addNamesToWantToGoList(user.wantToGoList);
-        console.log(wanttogolist.length);
-        res.render("wanttogo",{wanttogolist})
-        
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
-      }
+      const wanttogolist = [];
+      res.render("wanttogo",{wanttogolist})
     }
   
     run().catch(console.dir);    
+
   }
 
 });

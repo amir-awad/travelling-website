@@ -28,7 +28,7 @@ router.post("/", (req, res) => {
       const coll = await client.db('myDB').collection('myCollection');
 
       const user =  await coll.findOne({name: username});
-      const wanttogolist = user.wantToGoList;
+      const wanttogolist = [];
       wanttogolist.forEach(element => {
         if(element=="paris"){
           exist=1;

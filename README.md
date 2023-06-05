@@ -9,7 +9,7 @@ A network application based on the client/server architecture using Node.js, Exp
 1-Clone the project
 
 ```bash
-  git clone https://github.com/abdulrhman500/Harvard-computer-architecture-simulator.git
+  git clone https://github.com/amir-awad/travelling-website.git
 ```
 
 2-Go to the project directory

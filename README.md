@@ -34,7 +34,16 @@ A network application based on the client/server architecture using Node.js, Exp
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+![App Screenshot](https://github.com/amir-awad/travelling-website/blob/main/images/Screenshot%20(119).png)
+|-------------------------------------------|
+![App Screenshot](https://github.com/amir-awad/travelling-website/blob/main/images/Screenshot%20(127).png)
+![App Screenshot](https://github.com/amir-awad/travelling-website/blob/main/images/Screenshot%20(120).png)
+![App Screenshot](https://github.com/amir-awad/travelling-website/blob/main/images/Screenshot%20(121).png)
+![App Screenshot](https://github.com/amir-awad/travelling-website/blob/main/images/Screenshot%20(122).png)
+![App Screenshot](https://github.com/amir-awad/travelling-website/blob/main/images/Screenshot%20(123).png)
+![App Screenshot](https://github.com/amir-awad/travelling-website/blob/main/images/Screenshot%20(125).png)
+![App Screenshot](https://github.com/amir-awad/travelling-website/blob/main/images/Screenshot%20(126).png)
 
 
 ## Authors
